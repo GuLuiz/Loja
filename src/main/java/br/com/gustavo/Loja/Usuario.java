@@ -3,110 +3,135 @@ package br.com.gustavo.Loja;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-
 public class Usuario {
 
-    Scanner teclado = new Scanner(System.in);
+    private Scanner teclado = new Scanner(System.in);
 
+    private Integer usuario_id;
+    private String nome;
+    private String email;
+    private String senha;
 
-    Integer usuario_id;
-    String nome;
-    String email;
-    String senha;
+    public Scanner getTeclado() {
+        return teclado;
+    }
 
+    public void setTeclado(Scanner teclado) {
+        this.teclado = teclado;
+    }
 
+    public Integer getUsuario_id() {
+        return usuario_id;
+    }
 
- public void incluir(){
+    public void setUsuario_id(Integer usuario_id) {
+        this.usuario_id = usuario_id;
+    }
 
-    System.out.println("+++++++++++++++++++++++++++++++++");
-    System.out.println("        USUÁRIO INCLUIR");
-    System.out.println("+++++++++++++++++++++++++++++++++");
+    public String getNome() {
+        return nome;
+    }
 
-    System.out.println("");
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    System.out.println("Digite o código : ");
-    usuario_id = teclado.nextInt();
-    teclado.nextLine();
-    System.out.println("Digite o nome : ");
-    nome = teclado.nextLine();
-    System.out.println("Digite o email : ");
-    email = teclado.nextLine();
-    System.out.println("Digite a senha : ");
-    senha = teclado.nextLine();
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    //Comando para o Banco de dados
-    String sqlInsert = "insert into usuario ( usuario_id, nome, email, senha) "
-    + " values ( " + usuario_id + ",'" + nome + "','" + email + "','" + senha + "')";
+    public String getSenha() {
+        return senha;
+    }
 
-    ConexaoDB conexao = new ConexaoDB();
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-    conexao.executeUpdate(sqlInsert);
+    public void incluir() {
 
+        System.out.println("+++++++++++++++++++++++++++++++++");
+        System.out.println("        USUÁRIO INCLUIR");
+        System.out.println("+++++++++++++++++++++++++++++++++");
 
- }
+        System.out.println("");
 
+        System.out.println("Digite o código : ");
+        usuario_id = teclado.nextInt();
+        teclado.nextLine();
+        System.out.println("Digite o nome : ");
+        nome = teclado.nextLine();
+        System.out.println("Digite o email : ");
+        email = teclado.nextLine();
+        System.out.println("Digite a senha : ");
+        senha = teclado.nextLine();
 
- public void alterarNome(){
+        // Comando para o Banco de dados
+        String sqlInsert = "insert into usuario ( usuario_id, nome, email, senha) "
+                + " values ( " + usuario_id + ",'" + nome + "','" + email + "','" + senha + "')";
 
-    System.out.println(" ID do usuario : " );
-    usuario_id = teclado.nextInt();
-    teclado.nextLine();
-    System.out.println("Novo Nome : ");
-    nome = teclado.nextLine();
+        ConexaoDB conexao = new ConexaoDB();
 
+        conexao.executeUpdate(sqlInsert);
 
-      
-      String sqlAlterar = "update usuario set nome = '" + nome + "' where usuario_id = '" 
-      + usuario_id + "'";
-      
-      System.out.println(sqlAlterar);
+    }
 
-      ConexaoDB conexao = new ConexaoDB();
+    public void alterarNome() {
 
-      conexao.executeUpdate(sqlAlterar);
+        System.out.println(" ID do usuario : ");
+        usuario_id = teclado.nextInt();
+        teclado.nextLine();
+        System.out.println("Novo Nome : ");
+        nome = teclado.nextLine();
 
+        String sqlAlterar = "update usuario set nome = '" + nome + "' where usuario_id = '"
+                + usuario_id + "'";
 
-      }
+        System.out.println(sqlAlterar);
 
-      public void alterarEmail(){
+        ConexaoDB conexao = new ConexaoDB();
 
-        System.out.println(" ID do usuario : " );
+        conexao.executeUpdate(sqlAlterar);
+
+    }
+
+    public void alterarEmail() {
+
+        System.out.println(" ID do usuario : ");
         usuario_id = teclado.nextInt();
         teclado.nextLine();
         System.out.println("Novo email : ");
         email = teclado.nextLine();
-    
-    
-          
-          String sqlAlterar = "update usuario set email = '" + email + "' where usuario_id = '" 
-          + usuario_id + "'";
-          
-          System.out.println(sqlAlterar);
-    
-          ConexaoDB conexao = new ConexaoDB();
-    
-          conexao.executeUpdate(sqlAlterar);
-    
-    
-          }
-         
 
-    
-    public void excluir (){
+        String sqlAlterar = "update usuario set email = '" + email + "' where usuario_id = '"
+                + usuario_id + "'";
+
+        System.out.println(sqlAlterar);
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        conexao.executeUpdate(sqlAlterar);
+
+    }
+
+    public void excluir() {
 
         System.out.println("+++++++++++++++++++++++++++++++++");
         System.out.println("        USUÁRIO EXCLUIR");
         System.out.println("+++++++++++++++++++++++++++++++++");
-    
+
         System.out.println("");
-    
+
         System.out.println("Digite o código : ");
         usuario_id = teclado.nextInt();
         teclado.nextLine();
 
-        String sqlDelete = "delete from usuario where categoria_id = " 
-        + usuario_id;
+        String sqlDelete = "delete from usuario where categoria_id = "
+                + usuario_id;
 
         ConexaoDB conexao = new ConexaoDB();
 
@@ -114,17 +139,12 @@ public class Usuario {
 
     }
 
-
-
-
-
-
-    public void listar (){
+    public void listar() {
 
         System.out.println("+++++++++++++++++++++++++++++++++");
         System.out.println("        USUÁRIO LISTAR");
         System.out.println("+++++++++++++++++++++++++++++++++");
-    
+
         System.out.println("");
 
         String sqlSelect = "select * from usuario";
@@ -136,42 +156,38 @@ public class Usuario {
         System.out.println("+++++++++++++++++++++++++++++++++");
         System.out.println("Cod.    Nome    Email   ");
         System.out.println("+++++++++++++++++++++++++++++++++");
-        try{
-        while ( dadosRetornado.next()){
-            System.out.println(
-            dadosRetornado.getInt("usuario_id")+ "     " +
-            dadosRetornado.getString("nome")+ "     " +
-            dadosRetornado.getString("email")
+        try {
+            while (dadosRetornado.next()) {
+                System.out.println(
+                        dadosRetornado.getInt("usuario_id") + "     " +
+                                dadosRetornado.getString("nome") + "     " +
+                                dadosRetornado.getString("email")
 
-            );
+                );
+            }
+        } catch (Exception erro) {
+            System.out.println("Erro : " + erro.getMessage());
         }
-    } catch( Exception erro){
-        System.out.println("Erro : " + erro.getMessage());
-    }
 
     }
-
 
     public void alterarSenha() {
 
-        System.out.println(" ID do usuario : " );
+        System.out.println(" ID do usuario : ");
         usuario_id = teclado.nextInt();
         teclado.nextLine();
         System.out.println("Nova Senha : ");
         senha = teclado.nextLine();
-    
-    
-          
-          String sqlAlterar = "update usuario set senha = '" + senha + "' where usuario_id = '" 
-          + usuario_id + "'";
-          
-          System.out.println(sqlAlterar);
-    
-          ConexaoDB conexao = new ConexaoDB();
-    
-          conexao.executeUpdate(sqlAlterar);
+
+        String sqlAlterar = "update usuario set senha = '" + senha + "' where usuario_id = '"
+                + usuario_id + "'";
+
+        System.out.println(sqlAlterar);
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        conexao.executeUpdate(sqlAlterar);
 
     }
-
 
 }

@@ -8,6 +8,9 @@ public class MenuUsuario {
 
     public void mostrarMenu() {
 
+        String opcao = "";
+
+        while( ! opcao.equals("0")){
         System.out.println("+++++++++++++++++++++++++++++++++");
         System.out.println("        MENU USUÁRIO");
         System.out.println("+++++++++++++++++++++++++++++++++");
@@ -19,11 +22,12 @@ public class MenuUsuario {
         System.out.println("4. Alterar Email");
         System.out.println("5. Alterar Senha");
         System.out.println("6. Listar");
+        System.out.println("0. Sair");
 
         System.out.println("");
         System.out.print("Escolha uma opção: ");
 
-        String opcao = teclado.nextLine();
+         opcao = teclado.nextLine();
 
         System.out.println("Opção escolhida : " + opcao);
 
@@ -66,7 +70,7 @@ public class MenuUsuario {
 
             Usuario usuario = new Usuario();
             usuario.listar();
-
+        }
         }
 
     }
