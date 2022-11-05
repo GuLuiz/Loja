@@ -60,9 +60,7 @@ public class Usuario {
 
         System.out.println("");
 
-        System.out.println("Digite o código : ");
-        usuario_id = teclado.nextInt();
-        teclado.nextLine();
+
         System.out.println("Digite o nome : ");
         nome = teclado.nextLine();
         System.out.println("Digite o email : ");
@@ -71,8 +69,8 @@ public class Usuario {
         senha = teclado.nextLine();
 
         // Comando para o Banco de dados
-        String sqlInsert = "insert into usuario ( usuario_id, nome, email, senha) "
-                + " values ( " + usuario_id + ",'" + nome + "','" + email + "','" + senha + "')";
+        String sqlInsert = "insert into usuario ( nome, email, senha) "
+                + " values ('" + nome + "','" + email + "','" + senha + "')";
 
         ConexaoDB conexao = new ConexaoDB();
 

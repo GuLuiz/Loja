@@ -60,14 +60,11 @@ public class Categoria {
 
         System.out.println("");
 
-        System.out.println("Digite o código : ");
-        categoria_id = teclado.nextInt();
-        teclado.nextLine();
         System.out.println("Digite o nome : ");
         nome = teclado.nextLine();
 
-        String sqlInsert = "insert into categoria"
-                + " values ( " + categoria_id + ",'" + nome + "'," + " now())";
+        String sqlInsert = "insert into categoria (nome , criado)"
+                + " values ('" + nome + "'," + " now())";
 
         System.out.println(sqlInsert);
 

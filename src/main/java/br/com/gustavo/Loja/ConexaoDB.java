@@ -16,7 +16,7 @@ public class ConexaoDB {
             conn = DriverManager.getConnection(
             "jdbc:h2:tcp://localhost/c:/Projeto/banco/loja",
             "sa",
-            "");
+            "123");
 
 
 
