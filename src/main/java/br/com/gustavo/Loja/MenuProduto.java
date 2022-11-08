@@ -1,13 +1,17 @@
 package br.com.gustavo.Loja;    
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MenuProduto{
 
-        Scanner sc = new Scanner(System.in);
+       
     
         public void mostrarMenu() {
-    
+
+            Locale.setDefault(Locale.US);
+            Scanner sc = new Scanner(System.in);
+            
             String opcao = "";
     
             while (!opcao.equals("0")) {
@@ -52,6 +56,8 @@ public class MenuProduto{
     
                     Categoria categoria = new Categoria();
                     categoria.listar();
+
+                    sc.close();
                 }
             }
         }
