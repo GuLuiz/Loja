@@ -45,7 +45,7 @@ public class MenuCategoria {
             if (opcao.equals("3")) {
 
                 MenuAlterar menuAlterar = new MenuAlterar();
-                menuAlterar.mostrarMenu();
+                menuAlterar.mostrarMenucat();
             }
 
             if (opcao.equals("4")) {

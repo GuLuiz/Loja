@@ -49,7 +49,7 @@ public class MenuProduto{
                 if (opcao.equals("3")) {
     
                     MenuAlterar menuAlterar = new MenuAlterar();
-                    menuAlterar.mostrarMenu();
+                    menuAlterar.mostrarMenuprod();
                 }
     
                 if (opcao.equals("4")) {

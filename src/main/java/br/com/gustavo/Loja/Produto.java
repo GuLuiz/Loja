@@ -1,8 +1,11 @@
 package br.com.gustavo.Loja;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner6;
 
 public class Produto {
 
@@ -131,7 +134,7 @@ public class Produto {
 
         System.out.println("Digite o nome : ");
         nome = sc.nextLine();
-        if (nome.equals("")){
+        if (nome.equals("")) {
             System.out.println("");
             System.out.println("Nome inválido");
 
@@ -140,15 +143,15 @@ public class Produto {
 
         System.out.println("Digite o preco : ");
         preco = sc.nextDouble();
-        if( preco <= 0){
+        if (preco <= 0) {
             System.out.println("Valor inválido");
             return;
-        
+
         }
 
         System.out.println("Digite o estoque : ");
         estoque = sc.nextDouble();
-        if(estoque <= 0){
+        if (estoque <= 0) {
             System.out.println("Valor inválido");
             return;
         }
@@ -159,27 +162,148 @@ public class Produto {
         if (is_favoritoInt == 1) {
 
             is_favorito = true;
-        } else if( is_favoritoInt == 2) {
-           
-            is_favorito = false;
-        } else{
+        } else if (is_favoritoInt == 2) {
 
-            System.out.println("Opção inválida" );
+            is_favorito = false;
+        } else {
+
+            System.out.println("Opção inválida");
             return;
         }
 
-            String sqlInsert = "insert into produto ( nome, preco, estoque, categoria_id, is_favorito, criado , precoatualizado) "
-                    + " values ('" + nome + "'," + preco + "," + estoque + "," + categoria_id + ",'" + is_favorito
-                    + "' , now() , now())";
-                    
+        String sqlInsert = "insert into produto ( nome, preco, estoque, categoria_id, is_favorito, criado , precoatualizado) "
+                + " values ('" + nome + "'," + preco + "," + estoque + "," + categoria_id + ",'" + is_favorito
+                + "' , now() , now())";
 
-            System.out.println(sqlInsert);
+        System.out.println(sqlInsert);
 
-            conexao.executeUpdate(sqlInsert);
-
-
-        }
+        conexao.executeUpdate(sqlInsert);
 
     }
 
+    public void excluir() {
 
+        System.out.println("+++++++++++++++++++++++++++++++++");
+        System.out.println("        PRODUTO EXCLUIR");
+        System.out.println("+++++++++++++++++++++++++++++++++");
+
+        System.out.println("");
+
+        System.out.println("Digite o código : ");
+        categoria_id = sc.nextInt();
+        sc.nextLine();
+
+        String sqlDelete = "delete from produto where produto_id = "
+                + produto_id;
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        conexao.executeUpdate(sqlDelete);
+
+    }
+
+    public void alterarNome() {
+
+        System.out.println(" ID do produto : ");
+        produto_id = sc.nextInt();
+        System.out.println("Novo Nome : ");
+        String nomeNovo = sc.nextLine();
+
+        String sqlAlterar = "update produto set nome = '" + nomeNovo + "' where produto_id = '"
+                + produto_id + "'";
+
+        System.out.println(sqlAlterar);
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        conexao.executeUpdate(sqlAlterar);
+
+    }
+
+    public void alterarPreco() {
+
+        System.out.println("ID do produto : ");
+        produto_id = sc.nextInt();
+        System.out.println("Novo preco : ");
+        int novoPreco = sc.nextInt();
+
+        String sqlAlterar = "update produto set preco = '" + novoPreco + "' where produto_id = '"
+                + produto_id + "'";
+
+        System.out.println(sqlAlterar);
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        conexao.executeUpdate(sqlAlterar);
+
+    }
+
+    public void alterarEstoque() {
+
+        System.out.println("ID do produto : ");
+        produto_id = sc.nextInt();
+        System.out.println("Novo estoque : ");
+        int novoEstoque = sc.nextInt();
+
+        String sqlAlterar = "update produto set estoque = '" + novoEstoque + "' where produto_id = '"
+                + produto_id + "'";
+
+        System.out.println(sqlAlterar);
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        conexao.executeUpdate(sqlAlterar);
+
+    }
+
+    public void alterarFav() {
+
+        System.out.println("ID do produto : ");
+        produto_id = sc.nextInt();
+
+        String sqlSelect = "select is_favorito from produto where produto_id = " + produto_id;
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        ResultSet dadosRetornado = conexao.executeSelect(sqlSelect);
+
+        try {
+            if (dadosRetornado.next()) {
+
+                System.out.println("Valor atual : " + dadosRetornado.getBoolean("is_favorito"));
+                System.out.println("Oque deseja fazer?");
+
+                System.out.println("1. Favoritar ");
+                System.out.println("2. Desfavoritar ");
+                is_favoritoInt = sc.nextInt();
+
+            } 
+            if (is_favoritoInt == 1) {
+
+                String sqlAlterar = "update produto set is_favorito = TRUE where produto_id = '"
+                        + produto_id + "'";
+
+                System.out.println(sqlAlterar);
+
+                conexao = new ConexaoDB();
+
+                conexao.executeUpdate(sqlAlterar);
+
+            } else if (is_favoritoInt == 2) {
+
+                String sqlAlterar = "update produto set is_favorito = FALSE where produto_id = '"
+                        + produto_id + "'";
+
+                System.out.println(sqlAlterar);
+
+                conexao = new ConexaoDB();
+
+                conexao.executeUpdate(sqlAlterar);
+
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+    }
+}
