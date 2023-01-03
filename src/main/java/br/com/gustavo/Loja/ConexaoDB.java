@@ -1,7 +1,9 @@
 package br.com.gustavo.Loja;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -61,4 +63,21 @@ public class ConexaoDB {
         return ret;
     }
 
+
+    public int executeInsertGetId(String sqlInsert ){
+        Connection conn = getConnection();
+        int id = -1;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sqlInsert,Statement.RETURN_GENERATED_KEYS);
+            int linhasAfetadas = pstmt.executeUpdate();
+            ResultSet idGerado = pstmt.getGeneratedKeys();
+            if ( idGerado.next()){
+                id = idGerado.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+
+    }
 }

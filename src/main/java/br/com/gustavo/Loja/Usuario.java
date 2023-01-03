@@ -128,7 +128,7 @@ public class Usuario {
         usuario_id = teclado.nextInt();
         teclado.nextLine();
 
-        String sqlDelete = "delete from usuario where categoria_id = "
+        String sqlDelete = "delete from usuario where usuario_id = "
                 + usuario_id;
 
         ConexaoDB conexao = new ConexaoDB();

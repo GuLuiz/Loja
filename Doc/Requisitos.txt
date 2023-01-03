@@ -1,0 +1,20 @@
+Produto
+
+
+a)Não permitir nome de produto em branco.
+- Se o nome do produto for deixado em branco apresentar uma mensagem de erro e sair da inclusão, retornando ao menu de produto.
+
+b)Permitir selecionar uma categoria ao incluir um produto.
+- Apresentar a lista de categorias para que o usuário possa escolher uma.
+- Se a categoria for inválida, apresentar uma mensagem de erro e sair da inclusão, retornando ao menu de produto.
+
+c) O campo criado e precoatualizado devem ter o mesmo valor na inclusão do prduto.
+
+d) Permitir selecionar se o produto é favorito ou não.
+- Apresentar uma lista de com as opções "Sim" ou "Não" 
+- Se uma opção inválida for escolhida, apresentar uma mensagem de erro e sair da inclusão, retornando ao menu de produto.
+
+e) Os campos preço e estoque só podem receber valores maior ou igual a zero.
+- Se for digitado uma valor menor que zero, apresentar uma mensagem de erro e sair da inclusão, retornando ao menu de produto.
+
+f) Na opção listar apresentar o código do produto, o nome do produto, o preço e o nome da categoria

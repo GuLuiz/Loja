@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 public class MenuUsuario {
 
-    Scanner teclado = new Scanner(System.in);
+     private Scanner teclado = new Scanner(System.in);
+
+    public Scanner getTeclado() {
+        return teclado;
+    }
+
+    public void setTeclado(Scanner teclado) {
+        this.teclado = teclado;
+    }
 
     public void mostrarMenu() {
 

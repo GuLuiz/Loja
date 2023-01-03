@@ -16,6 +16,7 @@ public class MenuPrincipal {
         System.out.println("1. Usuário");
         System.out.println("2. Categoria");
         System.out.println("3. Produto");
+        System.out.println("4. Vendas");
 
         System.out.println("");
         System.out.print("Escolha uma opção: ");
@@ -39,6 +40,12 @@ public class MenuPrincipal {
 
             MenuProduto menuProduto = new MenuProduto();
             menuProduto.mostrarMenu();
+        }
+
+        if (opcao.equals("4")) {
+
+            MenuVenda menuVendas = new MenuVenda();
+            menuVendas.mostrarMenu();
         }
 
     }

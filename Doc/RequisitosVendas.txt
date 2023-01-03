@@ -1,0 +1,39 @@
+Venda
+
+Sequencia de passos para executar uma Venda
+
+a) Apresentar um menu com as seguintes opções :
+- Inserir
+- Excluir
+- Pesquisar
+
+b) Inserir
+b1) O campo venda.DATA deve ter a data do momento da criação da Venda
+b2) O campo venda.CLIENTE_ID não é obrigatório, nesse caso gravar null ou zero
+b3) O campo venda.TOTAL deve ter o total da venda ( preço do produtos x quantidades )
+b4) O campo venda.PAGO deve ter o mesmo valor do campo TOTAL
+b5) O campo venda.DESCONTO de ter o valor do desconto concedido na finalização da venda.
+b6) O campo venda.IS_ORÇAMENTO deve ter o valor 0, que indica venda
+b7) O campo venda_produto.VENDA_ID deve ter o valor da chave primária da venda corrente.
+b8) O campo venda_produto.PRODUTO_ID deve ter a chave primária do produto escolhido
+b9) O campo venda_produto.PRECO deve ter o preço do produto cadastrado na tabela produto
+b10) O campo venda_produto.QUANTIDADE deve ter a quantidade desejada do produto escolhido
+b11) O campo venda_produto.COMENTARIO deve ser deixado em branco
+
+b12) Pode ser inserido no máximo 5 produtos para cada venda
+b13) A inclusão de cada produto será feita por PRODUTO_ID e QUANTIDADE.
+b14) Após inserir o PRODUTO_ID desejado, deve ser apresentado ao usuário o nome do produto e o preço atual.
+b15) Após ser apresentado ao dados do produto deve ser solicitado ao usuário a quantidade desejada.
+b16) Cada produto inserido deve ser gravado na tabela venda_produto os campos pertinentes.
+b17) Para finalizar a inclusão de produtos, antes do máximo, basta digitar 0 no PRODUTO_ID.
+b18) Após finalizar a inclusão do(s) produto(s) atualizar o venda.TOTAL e venda.PAGO
+
+c) Excluir 
+c1) A exclusão da venda será pelo VENDA_ID
+c2) Após inserir o VENDA_ID deve ser apresentada os dados da venda.
+c3) Solicitar ao usuário a confirmação da exclusão.
+- Caso confirmada, excluir os dados da tabela VENDA e VENDA_PRODUTO referente a venda escolhida.
+
+d) Pesquisar
+d1) A pesquisa de uma determinada venda será feita pelo VENDA_ID
+d2) Apresentar os dados da venda e seus respectivos produtos. ( CUPOM )

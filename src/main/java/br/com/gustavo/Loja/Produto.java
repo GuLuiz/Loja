@@ -189,8 +189,8 @@ public class Produto {
 
         System.out.println("");
 
-        System.out.println("Digite o código : ");
-        categoria_id = sc.nextInt();
+        System.out.println("Digite o codigo : ");
+        produto_id = sc.nextInt();
         sc.nextLine();
 
         String sqlDelete = "delete from produto where produto_id = "
@@ -277,7 +277,7 @@ public class Produto {
                 System.out.println("2. Desfavoritar ");
                 is_favoritoInt = sc.nextInt();
 
-            } 
+            }
             if (is_favoritoInt == 1) {
 
                 String sqlAlterar = "update produto set is_favorito = TRUE where produto_id = '"
@@ -302,8 +302,38 @@ public class Produto {
 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-        } 
+        }
+    }
+
+    public void listar() {
+
+        System.out.println("+++++++++++++++++++++++++++++++++");
+        System.out.println("        PRODUTO LISTAR");
+        System.out.println("+++++++++++++++++++++++++++++++++");
+
+        System.out.println("");
+
+        String sqlSelect = "select produto_id , produto.nome nome_do_produto , preco, categoria.nome from produto inner join categoria on produto.categoria_id = categoria.categoria_id";
+
+        ConexaoDB conexao = new ConexaoDB();
+
+        ResultSet dadosRetornado = conexao.executeSelect(sqlSelect);
+
+        System.out.println("+++++++++++++++++++++++++++++++++");
+        System.out.println("Cod.    Nome    Preco    Categoria");
+        System.out.println("+++++++++++++++++++++++++++++++++");
+        try {
+            while (dadosRetornado.next()) {
+                System.out.println(
+                        dadosRetornado.getInt("produto_id") + "     " +
+                                dadosRetornado.getString("nome_do_produto") + "     " +
+                                dadosRetornado.getDouble("preco") + "     " +
+                                dadosRetornado.getString("Nome"));
+            }
+        } catch (Exception erro) {
+            System.out.println("Erro : " + erro.getMessage());
+        }
+
     }
 }
